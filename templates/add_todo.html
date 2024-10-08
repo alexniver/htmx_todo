@@ -1,0 +1,14 @@
+<form id="add_todo" hx-post="/add_todo">
+  <div class="p-3">
+    <div class="font-bold">
+      <label>待办内容</label>
+    </div>
+    <input name="content" class="w-full border border-gray-200 px-3 py-2 focus:outline-gray-500">
+  </div>
+  <div class="p-3">
+    <button type="submit" class="p-3 bg-gray-500 w-32 text-center font-bold text-gray-50">提交</button>
+  </div>
+  <!-- 隐藏元素，用于刷新列表 -->
+  <div id="refresh-trigger" hx-get="/todo_list" hx-target="#todo_list" hx-swap="innerHTML"
+    hx-trigger="load, htmx:afterSwap from:#add_todo"></div>
+</form>

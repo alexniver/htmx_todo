@@ -1,0 +1,25 @@
+{% for todo in todo_list %}
+<tr>
+  <td class="">
+    <div class="p-3 text-sm text-left">{{todo.id}}</div>
+  </td>
+  <td class="">
+    <div class="p-3 text-sm text-left">{{todo.content}}</div>
+  </td>
+  <td class="">
+    <div class="p-3 text-sm text-left">{%if todo.is_done %} 完成 {% else %} 未完成 {% endif %} </div>
+  </td>
+  <td class="">
+    <div class="p-3 text-sm text-left">
+
+      {%if todo.is_done%}
+      <button id="undone" class="w-20 h-10 rounded-sm bg-gray-500 text-gray-50" hx-get="/undone/{{todo.id}}"
+        hx-target="#todo_list" hx-swap="innerHTML">未完成</button>
+      {% else %}
+      <button class="w-20 h-10 rounded-sm bg-gray-500 text-gray-50" id="done" hx-get="/done/{{todo.id}}"
+        hx-target="#todo_list" hx-swap="innerHTML">完成</button>
+      {% endif %}
+    </div>
+  </td>
+</tr>
+{% endfor %}

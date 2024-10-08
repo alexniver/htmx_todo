@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Todo List</title>
+</head>
+
+<body>
+
+  <div id="content">
+    <div>
+      <button id="add_btn" hx-get="/add_todo" hx-swap="innerHTML" hx-target="#add_todo" popovertarget="add_todo"
+        class="px-3 py-1 m-3 rounded bg-gray-500 font-bold text-gray-50 hover:bg-gray-400">添加</button>
+
+      <div id="add_todo" popover class="w-96 bg-gray-200">
+      </div>
+
+      <table class="w-full">
+        <thead class="bg-gray-200">
+          <tr>
+            <th scope="col" class="w-1/5 p-3 text-sm text-left">
+              ID
+            </th>
+            <th scope="col" class="w-2/5 p-3 text-sm text-left">
+              待办内容
+            </th>
+            <th scope="col" class="w-1/5 p-3 text-sm text-left">
+              是否完成
+            </th>
+            <th scope="col" class="w-1/5 p-3 text-sm text-left">
+              操作
+            </th>
+          </tr>
+        </thead>
+        <tbody class="" id="todo_list" hx-get="/todo_list" hx-trigger="load">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
